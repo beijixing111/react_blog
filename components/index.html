@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>窗口拖动</title>
+  <style>
+    .dragobj{
+      width: 200px; height: 200px; background: #fff;
+      position: fixed; left: 0; top: 0; 
+      overflow: hidden; border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5); 
+    }
+    .title{
+      height: 30px; line-height: 30px; text-align: center;
+      background: #ccc;cursor: move; 
+    }
+  </style>
+</head>
+<body>
+  <div class="dragobj">
+    <div class="title">标题栏拖动001</div>
+  </div>
+  <p>1233</p>
+  <script src="./DragModel.js"></script>
+  <script>
+
+    // var str = "font-size:12px;min-height: 10px";
+    // str = str.replace(/\-[a-z]/g, function(word){
+    //   console.log(word.substring(1,2));
+    //   return word.substring(1).toUpperCase();
+    // });
+    // console.log(str);
+    // var d = new DragModel();
+    // d.drag();
+
+    // function add(param){
+    //   var args = !!param? Array.prototype.slice.call(arguments) : [];
+    //   return args.reduce(function(pre, cur){
+    //     return pre + cur;
+    //   }, 0);
+    // }
+    // console.log(add());
+    // console.log(add(1,2));
+
+
+    var dragConf = {
+      parentObj: document.querySelector('.dragobj'),
+      title: document.querySelector('.title'),
+      isMove: false
+    };
+    window.onload = function() {
+      //设置点击
+    dragConf.parentObj.onmousedown = function(e){
+        e.preventDefault();
+        dragConf.isMove = true;
+        dragMask(dragConf.isMove);
+        dragWinDown(e, dragConf);
+      }
+    }
+    
+    //拖拽鼠标左键按下、抬起
+    function dragWinDown(e, dragConf) {
+      e = e || window.event;
+      var disX = e.clientX - dragConf.parentObj.offsetLeft;
+      var disY = e.clientY - dragConf.parentObj.offsetTop;
+      // console.log(disX, disY); 
+      document.onmousemove = function(e) {
+        e = e || window.event;
+        e.preventDefault();
+        dragWinMove(e, disX, disY, dragConf);
+      };
+      document.onmouseup = function (e) {
+        dragConf.isMove = false;
+        e.preventDefault();
+        dragMask(dragConf.isMove);
+        e = e || window.event;
+        dragWinMove(e, disX, disY, dragConf);
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    }
+    //拖拽移动
+    function dragWinMove(e, x, y, dragConf) {
+      if(!dragConf.isMove){
+        return;
+      }
+      var winWid, winHei, maxWid, maxHei, left, top;
+      winWid = document.documentElement.clientWidth || document.body.clientWidth,
+      winHei = document.documentElement.clientHeight || document.body.clientHeight
+      maxWid = winWid - dragConf.parentObj.offsetWidth;
+      maxHei = winHei - dragConf.parentObj.offsetHeight;
+      left = e.clientX - x;
+      top = e.clientY - y;
+      if(left <= 0) {
+        left = 0;
+      }else if(left >= maxWid){
+        left = maxWid;
+      }
+      if(top <= 0){
+        top = 0;  
+      }else if(top >= maxHei){
+        top = maxHei;
+      }
+      dragConf.parentObj.style.left = left + 'px';
+      dragConf.parentObj.style.top = top + 'px';
+    }
+    
+    function dragMask(isMove){
+      var hasMask = document.getElementById('dragmask');
+      if(!!hasMask){
+        var isShow = isMove? 'block': 'none';
+        hasMask.style.display = isShow;
+        return;
+      }
+      var mask = document.createElement('div');
+      mask.setAttribute('id','dragmask');
+      mask.setAttribute('style', 'opacity: 1');
+      var sty = "display:block;opacity:0;cursor:move;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999999;";
+      // var sty = {
+      //   display: 'block',
+      //   opacity: 0,
+      //   cursor: 'move',
+      //   position: 'fixed',
+      //   top: 0,
+      //   left: 0,
+      //   right: 0,
+      //   bottom: 0,
+      //   zIndex: 99999999
+      // };
+      setStyle(mask, sty);
+      document.body.appendChild(mask);
+    }
+
+    function setStyle(dom, objStyle){
+      console.log(typeof objStyle);
+      if(typeof objStyle == 'string'){
+        var objStyle = objStyle.replace(/\s/g, '');
+        if(!dom.getAttribute('style')){
+          dom.setAttribute('style', objStyle);
+        }else {
+          //将含有小短线的css属性转换为小驼峰
+          objStyle = objStyle.replace(/(\-[a-z])/g, function (word) {
+            return word.substring(1).toUpperCase();
+          });
+          //方式一：将字符串转换成对象形式，需要写正则匹配
+          // objStyle = objStyle.replace(/(\w+)\s*\:\s*(\w+)/g, '"$1": "$2"');
+          // objStyle = objStyle.replace(/\;/g, ',');
+          // objStyle = objStyle.substring(',') != -1 ? objStyle.substring(0, objStyle.length-1) : objStyle; 
+          // objStyle = JSON.parse("{" + objStyle + "}");
+          //方式二：将字符串转换成数组的形式。
+          // console.log(JSON.parse(objStyle));
+          var styArr = objStyle.split(';');
+          console.log(objStyle);
+          for (var k = 0; k < styArr.length; k++) {
+            if(styArr[k] == '') continue;
+            var _strArr = styArr[k].split(':');
+            dom.style[_strArr[0]] = _strArr[1]; 
+          }
+          return;  
+        }
+        
+      } 
+      for (var k in objStyle) {
+        dom.style[k] = objStyle[k];
+      }
+    }
+  </script>
+</body>
+</html>

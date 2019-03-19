@@ -1,0 +1,52 @@
+@import "~antd/dist/antd.css";
+
+$font-size: 20px; 
+$color:#f0f2f5;
+*{
+  margin: 0; padding: 0;
+}
+body{
+  background: $color;
+  font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  // background: green;
+}
+.example{
+  font-size: $font-size;
+  color: $color;
+}
+.wrapper-item{
+	// border: 1px solid rgba(0,0,0,0.1);
+	padding: 0 10px; background: #fff; 
+}						
+.wrapper-left{
+	float: left; width: 879px; min-height: 1000px; border-right: 1px solid #90bba8;
+}
+.wrapper-rig{ 
+	float: right; width: 320px; height: 300px;
+}
+.carousel-wrapper {
+  height: 300px;
+  width: 700px;
+  overflow: hidden;
+}
+.carousel-wrapper .ant-carousel {
+  height: 300px;
+  width: 700px;
+}
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 300px;
+  width: 100%;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide img {
+  height: 100%;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: green;
+}
