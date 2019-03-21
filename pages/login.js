@@ -140,25 +140,47 @@ export default class extends Component {
     } else {
       this.setState({ loginMsg: '' });
     }
-    Axios.post(url, {
-        username: username,
-        password: this.state.password
-      })
-      .then((res) => {
-        // console.log(res.data);
-        if (res.data.level == -1) {
-          this.setState({ loginMsg: '*抱歉，你没有登录权限！*' });
-          return;
-        }
-        let tokenStr = JSON.stringify(res.data);
-        Cache.setCookie('token', tokenStr);
-        Router.push({
-          pathname: '/',
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    var resss = {};
+    if(username == 'admin'){
+      resss = {
+        'level': 1,
+        'user': 'Admin'
+      }
+    }else if( username == 'test'){
+      resss = {
+        'level': 0,
+        'user': 'Normal'
+      }
+    }else{
+      return resss = {
+        'level': -1,
+        'user': '无权限'
+      };
+    }
+    let tokenStr = JSON.stringify(resss);
+    Cache.setCookie('token', tokenStr);
+    Router.push({
+      pathname: '/',
+    });
+    // Axios.post(url, {
+    //     username: username,
+    //     password: this.state.password
+    //   })
+    //   .then((res) => {
+    //     // console.log(res.data);
+    //     if (res.data.level == -1) {
+    //       this.setState({ loginMsg: '*抱歉，你没有登录权限！*' });
+    //       return;
+    //     }
+    //     let tokenStr = JSON.stringify(res.data);
+    //     Cache.setCookie('token', tokenStr);
+    //     Router.push({
+    //       pathname: '/',
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   render() {

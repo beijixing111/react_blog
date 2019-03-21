@@ -91,7 +91,7 @@ export default class extends Component {
               padding: 10px 0; 
             }
             .hot-content .show-link{
-              padding: 5px 8px; display: inline-block; margin: 0 10px 10px 0;
+              padding: 5px 16px; display: inline-block; margin: 0 10px 10px 0;
               border-radius: 2px; background: rgba(1,126,102,.08); color: #017e66;
               text-decoration: none; border-radius: 3px;
             }

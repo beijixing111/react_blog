@@ -6,7 +6,6 @@ import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
 import Level from '../components/Level';
 import Loading from '../components/Loading';
-import { connect } from "react-redux";
 import { Carousel } from 'antd';
 
 //beforeChange = {(from, to) => { //console.log(from, to);}}
@@ -77,4 +76,4 @@ class Page extends Component {
   }
 }
 
-export default connect()(Page);
+export default Page;
