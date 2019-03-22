@@ -17,7 +17,6 @@ export default () => (
     <meta name="browsermode" content="application" /> 
     <meta name="x5-page-mode" content="app" /> 
     <meta name="msapplication-tap-highlight" content="no" />
-    <title>北极星</title> 
-    <link rel="stylesheet" href="/_next/static/style.css" />
+    <title>北极星</title>
   </Head>
 )

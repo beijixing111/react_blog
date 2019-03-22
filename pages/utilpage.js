@@ -23,9 +23,9 @@ export default class extends Component {
   }
 
   render() {
-    if (this.state.levelData == null) {
-      return <Loading />;
-    }
+    // if (this.state.levelData == null) {
+    //   return <Loading />;
+    // }
     return (
       <Layout levelData={this.state.levelData} isActive={this.props.path}>
         <div className="wrapper-left wrapper-item">

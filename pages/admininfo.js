@@ -32,7 +32,6 @@ const adminMangerlist = [{
   label: '个人资料'
 }];
 
-
 export default class extends Component{
   static async getInitialProps(ctx) {
     console.log(ctx);

@@ -26,9 +26,9 @@ export default class extends Component {
 	}
 
 	render() {
-		if (this.state.levelData == null) {
-			return <Loading />;
-		}
+		// if (this.state.levelData == null) {
+		// 	return <Loading />;
+		// }
 		const contentText = this.props.show.summary.replace(/<[/]?p>/g, '');
 		return (
 			<Layout levelData={this.state.levelData} isActive="/">

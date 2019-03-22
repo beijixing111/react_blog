@@ -6,9 +6,9 @@ $color:#f0f2f5;
   margin: 0; padding: 0;
 }
 body{
-  background: $color;
+  background: $color !important;
   font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   // background: green;
 }
 .example{
@@ -20,33 +20,27 @@ body{
 	padding: 0 10px; background: #fff; 
 }						
 .wrapper-left{
-	float: left; width: 879px; min-height: 1000px; border-right: 1px solid #90bba8;
+	float: left; width: 879px; min-height: 800px; 
+  border-right: 1px solid #90bba8;
 }
 .wrapper-rig{ 
-	float: right; width: 320px; height: 300px;
-}
-.carousel-wrapper {
-  height: 300px;
-  width: 700px;
-  overflow: hidden;
-}
-.carousel-wrapper .ant-carousel {
-  height: 300px;
-  width: 700px;
-}
-.ant-carousel .slick-slide {
-  text-align: center;
-  height: 300px;
-  width: 100%;
-  line-height: 160px;
-  background: #364d79;
-  overflow: hidden;
+	float: right; width: 320px; 
 }
 
-.ant-carousel .slick-slide img {
-  height: 100%;
+.card-section{
+  padding: 0px 15px; margin-bottom: 10px; box-shadow: 0 0 5px #ccc;
+  .card-title{
+    border-bottom: 1px solid #90bba8; font-weight: bold; padding: 10px 0;
+    font-size: 16px;
+  }
+  .card-title em{
+    display: inline-block; padding: 0 5px; height: 16px;
+    margin-right: 10px; background: #ff2222; font-weight: normal;
+    font-size: 10px; color: #fff; 
+  }
+  .card-content{
+    padding: 10px 0; 
+  }
 }
 
-.ant-carousel .slick-slide h3 {
-  color: green;
-}
+            

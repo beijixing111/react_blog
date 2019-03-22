@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import HotNav from '../components/HotNav';
 import Bloglist from '../components/Bloglist';
 import BlogDetail from '../components/BlogDetail';
+import Calendarpanel from '../components/Calendarbox';
 
 const ListItemIndex = [{
   id: 1,
@@ -61,9 +62,9 @@ export default class extends Component {
   }
 
   render() {
-    if (this.state.levelData == null) {
-      return <Loading />;
-    }
+    // if (this.state.levelData == null) {
+    //   return <Loading />;
+    // }
     console.log(this.props);
     return (
       <Layout levelData={this.state.levelData} isActive={this.props.path}>
@@ -75,6 +76,7 @@ export default class extends Component {
         </div>
         <div className="wrapper-rig wrapper-item">
           <HotNav type={this.props.typestr} />
+          <Calendarpanel /> 
         </div>
         
       </Layout>
