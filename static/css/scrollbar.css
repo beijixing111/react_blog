@@ -1,0 +1,56 @@
+/* canvas背景 */
+#matrixBG{
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: -10;
+    opacity:0.8;
+}
+/* 小屏幕关闭canvas */
+@media screen and (max-width: 768px) {
+    body {
+        background-color: #fff;
+    }
+    #matrixBG {
+        display: none;
+    }
+}
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+}
+
+::-webkit-scrollbar-button:start:increment,::-webkit-scrollbar-button:end:decrement {
+	display: none;
+}
+
+::-webkit-scrollbar-corner {
+	display: block;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background-color: rgba(180,180,180,.4);
+    /*background-color: #96b97d;*/
+}
+
+::-webkit-scrollbar-thumb:hover {
+	border-radius: 8px;
+	background-color: rgba(180,180,180,.5);
+}
+
+::-webkit-scrollbar-track,::-webkit-scrollbar-thumb {
+	border-right: 1px solid transparent;
+	border-left: 1px solid transparent;
+}
+
+::-webkit-scrollbar-track:hover {
+	background-color: rgba(180,180,180,.15);
+}
+

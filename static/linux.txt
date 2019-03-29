@@ -1,0 +1,17 @@
+
+1. 查看CPU使用   使用top命令
+
+图中红框里表是cpu使用情况，最右侧的%id表示剩余，若很低，则表示cpu被吃完了，在top界面按shift+p对进程使用cpu排序，能看到哪些进程占用cpu较多。
+
+2.查看内存使用情况 
+free -g
+当观察到free栏已为0的时候，表示内存基本被吃完了，那就释放内存吧
+
+2.查看node进程
+ps -ax | grep node
+
+3.杀掉进程
+kill 3000
+
+4.启动next 服务
+pm2 start npm --watch --name "react-blog" -- run start

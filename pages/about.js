@@ -1,9 +1,63 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import Level from '../components/Level';
-import Loading from '../components/Loading';
-import Button from 'antd/lib/button';
+import Loading from '../components/Loading'; 
 import Cardziliao from '../components/Cardbox.js';
+import ProItem from '../components/ProItem.js';
+
+var ReactProData = [{
+  title: 'React项目',
+  groupArr: [{
+    title: '仿京东手机端商城',
+    desc: 'react技术栈+antd-mobile,随意手机号，密码不小于6位数，登录可查看购物车功能！',
+    cover: '/static/images/jidong.jpg',
+    giturl: 'https://github.com/beijixing111/jdapp',
+    scanurl: 'https://www.mimyz.com'
+  },{
+    title: 'react_blog博客---本博客',
+    desc: 'next.js 服务端渲染，搭配koa2自定义服务器路由！ 博客接口数据陆续开发中……',
+    cover: '/static/images/jidong.jpg',
+    giturl: 'https://github.com/beijixing111/react_blog',
+    scanurl: 'http://blog.mimyz.com/about'
+  },{
+    title: 'react+redux简书项目',
+    desc: '实现简书首页，登录页，列表页，详情页等功能模块。',
+    cover: '/static/images/jidong.jpg',
+    giturl: 'https://github.com/beijixing111/react_blog',
+    scanurl: ''
+  }, {
+    title: 'react图片画廊',
+    desc: 'react图片画廊',
+    cover: '/static/images/gallery.png',
+    giturl: 'https://github.com/beijixing111/Gallery-by-react',
+    scanurl: ''
+  }]
+},{
+  title: '百淘公司项目',
+  groupArr: [{
+    title: '看了么商城',
+    desc: '看了么购物商城，卖家，买家购物消费平台，(扫码是手机站，Link链接是PC)',
+    cover: '/static/images/kanleme.jpg',
+    giturl: 'https://yzsh58.com/',
+    scanurl: 'https://mobile.yzsh58.com/'
+  }, {
+    title: '小智定位管理系统',
+    desc: 'koa2 + ejs实现前端页面快速开发，中小学学生信息定位管理系统，配合APP端管理学生位置信息，考勤信息等(更多信息不方便透露)……',
+    cover: '/static/images/xiaozhi_01.jpg',
+    giturl: '#',
+    scanurl: ''
+  }]
+}, {
+  title: '小程序项目',
+  groupArr: [{
+    title: '呆呆酱',
+    desc: '小程序个人版(未上线)，首页（视频、段子，文字，图片），视频为B站接口视频，音乐为部分QQ音乐接口，我的（登录加扫一扫等功能）',
+    cover: '/static/images/small_01.png',
+    giturl: '#',
+    scanurl: ''
+  }]
+}];
+
 
 export default class extends Component {
   static async getInitialProps(ctx) {
@@ -25,15 +79,12 @@ export default class extends Component {
     });
   }
 
-  render() {
-    // if (this.state.levelData == null) {
-    //   return <Loading />;
-    // }
+  render() { 
     return (
       <Layout levelData={this.state.levelData} isActive={this.props.path}>
 				<div className="wrapper-box">
 					<div className="wrapper-left wrapper-item">
-						<p>This is a about page!</p>
+						<ProItem data={ReactProData} />
 					</div>
 					<div className="wrapper-rig wrapper-item">
 						<Cardziliao  title="个人资料" >
@@ -48,52 +99,18 @@ export default class extends Component {
                 签名：<span>前端小白前端小白前端小白前端小白前端小白</span>
               </div>
               <div className="info-text">
-                擅长领域：<span> web前端，react，css3，node.js，koa，
-                nginx，Scss，less</span>
+                擅长领域：<span> Web前端，React技术栈，小程序，Css3，Node.js，Koa2，
+                Nginx，Scss，Less</span>
               </div> 
               <div className="info-link">
                 简书：<a href="https://www.jianshu.com/u/c7583a5ab917" target="_blank">https://www.jianshu.com/u/c7583a5ab917</a>
               </div>
               <div className="info-link">
-                github：<a href="https://github.com/beijixing111" target="_blank">https://github.com/beijixing111</a>
+                Github：<a href="https://github.com/beijixing111" target="_blank">https://github.com/beijixing111</a>
               </div>
             </Cardziliao>
-					</div> 
-          <style jsx="true">
-            {`
-              .headimg{
-                width: 100%; padding: 10px 0; 
-                display: flex; justify-content: flex-start;
-                align-items: center; 
-              }
-              .headimg img{
-                width: 80px; height: 80px; border-radius: 50%;
-                box-shadow: 0 0 10px 1px rgba(0, 0 , 0, .3);
-              }
-              .headimg .info{
-                margin-left: 15px;
-              }
-              .headimg .info p{
-                margin-bottom: 0; padding: 10px 0;font-size: 14px;
-              }
-              .headimg .info p span{
-                font-weight: bold; font-size: 14px;
-              }
-              .info-text{
-                padding: 10px 0; font-size: 14px;
-              }
-              .info-text span{
-                font-weight: bold; font-size: 14px;
-              }
-              .info-link{
-                white-space: nowrap; overflow: hidden;
-                text-overflow: ellipsis;
-              }
-              .info-link a{
-                font-size: 14px; 
-              }
-            `}
-          </style>
+
+					</div>  
 				</div>				
 			</Layout>
     );

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import Level from '../components/Level';
 import Loading from '../components/Loading';
-import HotNav from '../components/HotNav';
-import Bloglist from '../components/Bloglist';
-import BlogDetail from '../components/BlogDetail';
 import Calendarpanel from '../components/Calendarbox';
+const HotNav = dynamic(import('../components/HotNav')); 
+const Bloglist = dynamic(import('../components/Bloglist')); 
+const BlogDetail = dynamic(import('../components/BlogDetail')); 
 
 const ListItemIndex = [{
   id: 1,

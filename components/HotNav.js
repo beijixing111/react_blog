@@ -70,25 +70,10 @@ export default class extends Component {
 								</a>
 							</Link>
 						))}
-						<a className="show-link" href="https://www.hao123.com" target="_blank">百度</a>
+						<a className="show-link" href="https://www.jianshu.com/u/c7583a5ab917" target="_blank">简书</a>
 
 					</div>
-				</div> 
-				<style jsx="true" > 
-					{`
-            .card-content .show-link{
-              padding: 5px 16px; display: inline-block; margin: 0 10px 10px 0;
-              border-radius: 2px; background: rgba(1,126,102,.08); color: #017e66;
-              text-decoration: none; border-radius: 3px;
-            }
-            .card-content .show-link:hover{ 
-              background: #017e66; color: #fff;
-            }
-            .card-content .show-link.active{
-            	background: #017e66; color: #fff;
-            }
-          `}
-				</style>
+				</div>  
 			</>
 		);
 	}

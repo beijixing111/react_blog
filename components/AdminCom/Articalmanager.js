@@ -1,7 +1,7 @@
 
 import React,{ Component } from 'react';
 import Loading from '../Loading';
-import { Table, Divider, Tag}  from 'antd';
+import { Table, Divider, Tag }  from 'antd';
 
 const columns = [{
   title: 'name',

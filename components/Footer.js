@@ -2,8 +2,8 @@ export default () => {
 	return ( 
     <>
 		  <div className="footer">
-        <p>个人站点：React(Next.js SSR)+Express+Mysql+ES6</p>
-        <p>2018-09-12 建<span>❤️</span><span>❤️</span><span>❤️</span></p>
+        <p>个人站点：React(Next.js SSR)+Koa2+Mysql+ES6</p>
+        <p><span>❤️</span><span>❤️</span><span>❤️</span></p>
         <div></div>
       </div> 
       <style jsx = "true" > 
@@ -13,7 +13,7 @@ export default () => {
           }
           .footer p{
             text-align: center; color: #fff; padding: 5px 0; color: #fff;
-            opacity: 085;
+            font-size: 16px;
           }
           .footer p span{
             color: #d971d0; margin: 0 2px;

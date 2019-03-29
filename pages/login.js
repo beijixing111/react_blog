@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import HeadConf from '../components/HeadConf';
 import Axios from 'axios';
 import * as Cache from '../utils/cache';
-import '../static/style.scss';
+import '../static/style.less';
 
 const WithoutAuth = (props) => {
   return (
@@ -130,57 +130,57 @@ export default class extends Component {
     let url = "/api/login";
     let username = this.state.username;
     let password = this.state.password;
-    if (username == '' || username == null) {
-      return this.setState({ loginMsg: '* 用户名不能为空！*' });
-    } else {
-      this.setState({ loginMsg: '' });
-    }
-    if (password == '' || password == null) {
-      return this.setState({ loginMsg: '* 密码不能为空！*' });
-    } else {
-      this.setState({ loginMsg: '' });
-    }
-    var resss = {};
-    if(username == 'admin'){
-      resss = {
-        'level': 1,
-        'user': 'Admin'
-      }
-    }else if( username == 'test'){
-      resss = {
-        'level': 0,
-        'user': 'Normal'
-      }
-    }else{
-      return resss = {
-        'level': -1,
-        'user': '无权限'
-      };
-    }
-    let tokenStr = JSON.stringify(resss);
-    Cache.setCookie('token', tokenStr);
-    Router.push({
-      pathname: '/',
-    });
-    // Axios.post(url, {
-    //     username: username,
-    //     password: this.state.password
-    //   })
-    //   .then((res) => {
-    //     // console.log(res.data);
-    //     if (res.data.level == -1) {
-    //       this.setState({ loginMsg: '*抱歉，你没有登录权限！*' });
-    //       return;
-    //     }
-    //     let tokenStr = JSON.stringify(res.data);
-    //     Cache.setCookie('token', tokenStr);
-    //     Router.push({
-    //       pathname: '/',
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    // if (username == '' || username == null) {
+    //   return this.setState({ loginMsg: '* 用户名不能为空！*' });
+    // } else {
+    //   this.setState({ loginMsg: '' });
+    // }
+    // if (password == '' || password == null) {
+    //   return this.setState({ loginMsg: '* 密码不能为空！*' });
+    // } else {
+    //   this.setState({ loginMsg: '' });
+    // }
+    // var resss = {};
+    // if(username == 'admin'){
+    //   resss = {
+    //     'level': 1,
+    //     'user': 'Admin'
+    //   }
+    // }else if( username == 'test'){
+    //   resss = {
+    //     'level': 0,
+    //     'user': 'Normal'
+    //   }
+    // }else{
+    //   return resss = {
+    //     'level': -1,
+    //     'user': '无权限'
+    //   };
+    // }
+    // let tokenStr = JSON.stringify(resss);
+    // Cache.setCookie('token', tokenStr);
+    // Router.push({
+    //   pathname: '/',
+    // });
+    Axios.post(url, {
+        username: username,
+        password: password
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.level == -1) {
+          this.setState({ loginMsg: '*抱歉，你没有登录权限！*' });
+          return;
+        }
+        let tokenStr = JSON.stringify(res.data);
+        Cache.setCookie('token', tokenStr);
+        Router.push({
+          pathname: '/',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {

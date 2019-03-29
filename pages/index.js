@@ -1,13 +1,36 @@
 // next-redux-wrapper 需要使用这个库
-
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
 import Layout from '../components/Layout';
 import fetch from 'isomorphic-unfetch';
 import React, { Component } from 'react';
 import Level from '../components/Level';
 import Loading from '../components/Loading';
-import { Carousel } from 'antd';
-import Cardtuijian from '../components/Cardbox.js';
+import { Carousel, List, Avatar, Icon } from 'antd';  
+const Cardtuijian = dynamic(import('../components/Cardbox.js'));
+
+const creatlistData =  () => {
+  const listDataArr = [];
+  for(let i=0;i<23;i++){
+    listDataArr.push({
+      href: 'http://mimyz.com',
+      title: `ant design part ${i}`,
+      avatar: '',
+      description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+      content: 'We supply a series of design principles'
+    });
+  }
+  return listDataArr;
+};
+const listData = creatlistData();
+
+const IconText = ({type, text}) => (
+  <span>
+    <Icon type={type} style={{marginRight: 8}} />
+    {text}
+  </span>
+);
 
 //beforeChange = {(from, to) => { //console.log(from, to);}}
 // afterChange = {(current) => { //console.log(current);}}
@@ -38,12 +61,12 @@ class Page extends Component {
     });
   }
   render() { 
+    console.log(this.props);
     return (
       <Layout levelData={this.state.levelData} isActive={this.props.path}>
 				<div className="wrapper-left wrapper-item">
 					<div className="carousel-wrapper">
-						<Carousel autoplay  
-							>
+						<Carousel autoplay >
 							<div>
 								<img style={{width: "100%"}} src="../static/images/carousel.png" alt=""/>
 								<h3>1</h3></div>
@@ -61,6 +84,32 @@ class Page extends Component {
 							</div>
 						</Carousel>
 					</div>
+          <List
+            itemLayout="vertical"
+            size="large"
+            pagination={{
+              onChange: (page) => {
+                console.log(page);
+              },
+              pageSize: 10,
+            }}
+            dataSource={listData}
+            footer={<div><b>ant design</b> footer part</div>}
+            renderItem={item => (
+              <List.Item
+                key={item.title}
+                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+                extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src={item.avatar} />}
+                  title={<a href={item.href}>{item.title}</a>}
+                  description={item.description}
+                />
+                {item.content}
+              </List.Item>
+            )}
+          />
 				</div>
 				<div className="wrapper-rig wrapper-item">
           <Cardtuijian title="热门推荐" >
@@ -76,34 +125,7 @@ class Page extends Component {
           <Cardtuijian title="热门推荐" >
             <p>暂无内容</p>
           </Cardtuijian>
-        </div>
-				<style jsx="true"  >
-					{`
-						.carousel-wrapper {
-              height: 300px;
-              width: 100%;
-              overflow: hidden;
-            }
-            .carousel-wrapper .ant-carousel {
-              height: 300px;
-              width: 100%;
-            }
-            .ant-carousel .slick-slide {
-              text-align: center;
-              height: 300px;
-              width: 100%;
-              line-height: 160px;
-              background: #364d79;
-              overflow: hidden;
-            }
-            .carousel-wrapper .ant-carousel .slick-slide img{
-              width: 100%;
-            } 
-            .ant-carousel .slick-slide h3 {
-              color: green;
-            }
-					`}
-				</style>
+        </div> 
 			</Layout>
     );
   }

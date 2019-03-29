@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
+import dynamic from 'next/dynamic';
 import Header from './Header';
 import HeadConf from '../components/HeadConf';
 import Footer from '../components/Footer';
-import Dragbox from '../components/Dragbox';
-import '../static/style.scss';
+import { BackTop } from 'antd';  
+
+import Dragbox from "../components/Dragbox";
+import '../static/style.less';
 
 // import * as cache from '../utils/cache';
-
-const layoutStyle = {
-	// border: '1px solid #ddd'
-};
-
+ 
 const AdminLayerCont = (props) => {
 	return (
 		<div className="admin-container clearfix">
 			<div className="admin-wrapper clearfix">
-					{props.children}
-				</div>
+				{props.children}
+			</div>
 		</div>
 	);
 };
@@ -61,26 +60,11 @@ class Layout extends Component{
 				{this.props.levelData && this.props.levelData.level != 1 && !this.state.ishide ? <Footer /> : null}
 				{/* 管理员登录时不出现广告 */}
 				{this.props.levelData && this.props.levelData.level != 1 && !this.state.ishide ? <Dragbox /> : null}
-				<style jsx="true" global >
-					{`
-						.clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
-						.clearfix{zoom:1;}
-						.container{
-							width: 100%; clear: both; padding: 110px 0;
-						}
-						.container-wrapper{
-							width: 1200px; margin: 0 auto; background: #fff; 
-							border-radius: 3px; box-shadow: 0 0 5px #ccc;
-							padding: 10px 0;
-						}
-						.admin-container{
-							padding: 80px 0;
-						}
-						.admin-container .admin-wrapper{
-							padding-left: 180px; width: 100%;
-						}
-					`}
-				</style>
+				<BackTop>
+					<div className="ant-back-top-inner back-top">
+						<div className="ant-back-top-icon"></div>
+					</div>
+				</BackTop> 
 			</>
 	  );
 	}
