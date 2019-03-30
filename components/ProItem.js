@@ -5,7 +5,6 @@ import * as QrCode from 'qrcode.react';
 
 const { Meta } = Card;
 
-
 export default class ProItem extends Component {
   constructor(props) {
     super(props);

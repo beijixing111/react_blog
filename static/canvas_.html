@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>算法</title>
+	<style>
+		*{
+			margin: 0; border: 0;
+		}
+		#matrixBG{
+			position: fixed; top: 0; left: 0;
+    	z-index: -10; opacity: 0.8;
+		}
+		.container{
+			width: 1200px; min-height: 1600px; background: #fff;
+			margin: 0 auto;
+		}
+	</style>
+	<link rel="stylesheet" href="scrollbar.css">
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+	<canvas id="matrixBG" width="1920" height="1080"></canvas>
+	<script type="text/javascript" src="js/sort.js"></script>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		// 绘制canvas
+    $(document).ready(function(){
+    //var s=window.screen;
+    var width = matrixBG.width = window.screen.width;
+    var height = matrixBG.height = window.screen.height;
+    var yPositions = Array(300).join(0).split('');
+    var ctx=matrixBG.getContext('2d');
+    
+    var draw = function () {
+      ctx.fillStyle='rgba(0,0,0,.05)';
+      ctx.fillRect(0,0,width,height);
+      ctx.fillStyle='#0F0';
+      ctx.font = '10pt Georgia';
+      yPositions.map(function(y, index){
+        text = String.fromCharCode(30+Math.floor( Math.random()*95 ));
+        x = (index * 10)+10;
+        matrixBG.getContext('2d').fillText(text, x, y);
+        if(y > 100 + Math.random()*1e4)
+        {
+          yPositions[index]=0;
+        }
+        else
+        {
+          yPositions[index] = y + 10;
+        }
+      });
+    };
+    RunMatrix();
+    function RunMatrix()
+    {
+        if(typeof Game_Interval != "undefined") clearInterval(Game_Interval);
+                Game_Interval = setInterval(draw, 33);
+    }
+    function StopMatrix()
+    {
+        clearInterval(Game_Interval);
+    }
+    /**
+    //setInterval(draw, 33);
+    $("button#pause").click(function(){
+    StopMatrix();});
+    $("button#play").click(function(){RunMatrix();});
+    */
+    });
+	</script>
+</body>
+</html>

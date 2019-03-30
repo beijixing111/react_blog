@@ -14,7 +14,7 @@ const NavMenu = [{
 		'title': '工具库'
 	}, {
 		'path': '/about',
-		'title': '关于'
+		'title': '关于我'
 	}, {
 		'path': '/fuli',
 		'title': '小福利'

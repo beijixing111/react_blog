@@ -4,6 +4,7 @@ import Level from '../components/Level';
 import Loading from '../components/Loading'; 
 import Cardziliao from '../components/Cardbox.js';
 import ProItem from '../components/ProItem.js';
+import Heart from '../components/Heart';
 
 var ReactProData = [{
   title: 'React项目',
@@ -16,13 +17,13 @@ var ReactProData = [{
   },{
     title: 'react_blog博客---本博客',
     desc: 'next.js 服务端渲染，搭配koa2自定义服务器路由！ 博客接口数据陆续开发中……',
-    cover: '/static/images/jidong.jpg',
+    cover: '/static/images/blog_01.png',
     giturl: 'https://github.com/beijixing111/react_blog',
     scanurl: 'http://blog.mimyz.com/about'
   },{
     title: 'react+redux简书项目',
     desc: '实现简书首页，登录页，列表页，详情页等功能模块。',
-    cover: '/static/images/jidong.jpg',
+    cover: '/static/images/jianshu.png',
     giturl: 'https://github.com/beijixing111/react_blog',
     scanurl: ''
   }, {
@@ -57,7 +58,6 @@ var ReactProData = [{
     scanurl: ''
   }]
 }];
-
 
 export default class extends Component {
   static async getInitialProps(ctx) {
@@ -96,11 +96,14 @@ export default class extends Component {
                 </div>
               </div>
               <div className="info-text">
-                签名：<span>前端小白前端小白前端小白前端小白前端小白</span>
+                签名：<span><Heart color="#d971d0">❤️</Heart>前小白的小白博客<Heart color="#d971d0">❤️</Heart>。</span>
               </div>
               <div className="info-text">
-                擅长领域：<span> Web前端，React技术栈，小程序，Css3，Node.js，Koa2，
-                Nginx，Scss，Less</span>
+                擅长领域：<span> Web前端，Jquery, React技术栈，小程序，Css3，
+                Scss，Less</span>
+              </div> 
+              <div className="info-text">
+                熟悉领域：<span> Node.js，Koa2，Nginx，Linux，MySql</span>
               </div> 
               <div className="info-link">
                 简书：<a href="https://www.jianshu.com/u/c7583a5ab917" target="_blank">https://www.jianshu.com/u/c7583a5ab917</a>

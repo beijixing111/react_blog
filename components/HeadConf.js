@@ -17,6 +17,7 @@ export default () => (
     <meta name="browsermode" content="application" /> 
     <meta name="x5-page-mode" content="app" /> 
     <meta name="msapplication-tap-highlight" content="no" /> 
+    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../static/css/scrollbar.css" />
     <title>北极星</title>
   </Head>
